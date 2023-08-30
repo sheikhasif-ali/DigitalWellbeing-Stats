@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0624d905-2261-47e8-bc5b-63a35907ee00" name="Changes" comment="improved the date selection, removed unnecessary code, so it is now inclusive of the entered dates, fixed a lot of minor problems, added some documentation.">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-    </list>
+    <list default="true" id="0624d905-2261-47e8-bc5b-63a35907ee00" name="Changes" comment="improved the date selection, removed unnecessary code, so it is now inclusive of the entered dates, fixed a lot of minor problems, added some documentation." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,7 +30,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/Asif/Projects/Java/Hotel Billing",
     "settings.editor.selected.configurable": "preferences.pluginManager"
@@ -90,7 +88,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693399564411</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="improved the date selection, removed unnecessary code, so it is now inclusive of the entered dates, fixed a lot of minor problems, added some documentation.">
+      <option name="closed" value="true" />
+      <created>1693401723162</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1693401723162</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -135,7 +141,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="origin/main" />
                       </list>
                     </value>
                   </entry>
