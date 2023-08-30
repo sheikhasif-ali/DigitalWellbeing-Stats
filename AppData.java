@@ -1,5 +1,4 @@
 package WellbeingCounter;
-
 public class AppData {
 
     private final String appName;

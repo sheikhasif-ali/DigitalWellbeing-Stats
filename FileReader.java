@@ -9,7 +9,6 @@ import java.util.Date;
 //this class main goal is to create a list containing all the files in the directory
 public class FileReader {
     private ArrayList<File> list;
-
     public FileReader() { // you removed String file from the argument of the constructor
         this.list = new ArrayList<>();
     }

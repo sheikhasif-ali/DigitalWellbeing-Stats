@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Database implements Comparator<String> {
 
-    // database will store each day and all the apps used that day
+    // database will store each day and all the apps used that day.
     //list stores all the days with an array having all the apps with their times
     private final HashMap<Date, ArrayList<AppData>> list;
     //appTime stores the total time an app was used

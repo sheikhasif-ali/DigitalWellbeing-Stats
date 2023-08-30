@@ -8,6 +8,7 @@ public class UI {
         FileReader read = new FileReader();
 
         // getting start and end date
+
         String startDate, endDate;
         Scanner reader = new Scanner(System.in);
         System.out.println("Input initial date in format MM-dd-yyyy");
