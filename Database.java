@@ -9,11 +9,15 @@ public class Database implements Comparator<String> {
     //list stores all the days with an array having all the apps with their times
     private final HashMap<Date, ArrayList<AppData>> list;
     //appTime stores the total time an app was used
-    private final HashMap<String, Integer> appTime;
+    private HashMap<String, Integer> appTime;
+    private final HashMap<String, Integer> gameTime;
+    private final HashMap<String, Integer> codeTime;
 
     public Database() {
         this.appTime = new HashMap<>();
         this.list = new HashMap<>();
+        this.codeTime = new HashMap<>();
+        this.gameTime = new HashMap<>();
     }
 
     public void add(Date date, ArrayList<AppData> appList) {
@@ -93,6 +97,8 @@ public class Database implements Comparator<String> {
         for (Map.Entry<String, Integer> entry : entryList) {
             sortedHashMap.put(entry.getKey(), entry.getValue());
         }
+
+        this.appTime = sortedHashMap;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the limit in hours...");
         int timeLimit = 6;
@@ -117,7 +123,36 @@ public class Database implements Comparator<String> {
         }
         System.out.println("\n Total Time was: " + totalHours + " Hours Or " + totalHours / 24 + " Days!");
 
+        System.out.println(codeAndGameTime());
+
     }
+
+    public String codeAndGameTime() {
+        ArrayList<String> gameList = new ArrayList<>(Arrays.asList("Borderlands2", "JustCause3", "Dishonored", "ShippingPC-BmGame", "TombRaider", "MW2CR", "forzahorizon5", "Cities", "hl2", "BioshockHD"));
+        ArrayList<String> codeList = new ArrayList<>(Arrays.asList("chrome", "Code", "studio64", "idea64"));
+        String codeReturn = "";
+        String gameReturn = "";
+        int totalGameTime = 0;
+        int totalCodeTime = 0;
+
+        for (String loop : appTime.keySet()) {
+            int time = appTime.get(loop) / 3600;
+            if (gameList.contains(loop)) {
+                this.gameTime.put(loop, time);
+                gameReturn += (loop + " " + time + "\n");
+                totalGameTime += time;
+
+
+            } else if (codeList.contains(loop)) {
+                this.codeTime.put(loop, time);
+                codeReturn += (loop + " " + time + "\n");
+                totalCodeTime += time;
+            }
+        }
+
+        return "\nTotal Coding Time is ---> " + totalCodeTime + " hours OR " + totalCodeTime/24 + " Days" + "\n" + "\nTotal Gaming Time is ---> " + totalGameTime + " hours OR "  + totalGameTime/24 + " Days";
+    }
+
 
     public int setLimit(int limit) {
         return limit * 3600;
