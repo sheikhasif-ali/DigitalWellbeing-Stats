@@ -27,8 +27,9 @@ public class Database implements Comparator<String> {
 
     //adds to the list hashmap the date and all the apps used that day
     public void listReader(ArrayList<File> list) {
-        for (File loop : list) {
-            this.add(FileReader.getDate(loop.getName()), fileContent(loop));
+        //this used (File loop : list) but it caused a IndexOutOfBound error so replaced it
+        for (int i = 0; i < list.size()-2;i++) {
+            this.add(FileReader.getDate(list.get(i).getName()), fileContent(list.get(i)));
 
         }
     }
@@ -128,7 +129,7 @@ public class Database implements Comparator<String> {
     }
 
     public String codeAndGameTime() {
-        ArrayList<String> gameList = new ArrayList<>(Arrays.asList("Borderlands2", "JustCause3", "Dishonored", "ShippingPC-BmGame", "TombRaider", "MW2CR", "forzahorizon5", "Cities", "hl2", "BioshockHD"));
+        ArrayList<String> gameList = new ArrayList<>(Arrays.asList("RDR2","sekiro","ride5-Win64-Shipping","Borderlands2", "JustCause3", "Dishonored", "ShippingPC-BmGame", "TombRaider", "MW2CR", "forzahorizon5", "Cities", "hl2", "BioshockHD"));
         ArrayList<String> codeList = new ArrayList<>(Arrays.asList("chrome", "Code", "studio64", "idea64"));
         String codeReturn = "";
         String gameReturn = "";

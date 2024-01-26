@@ -1,9 +1,10 @@
 package WellbeingCounter;
 
+import java.text.ParseException;
 import java.util.Scanner;
 
 public class UI {
-    public void start() {
+    public void start() throws ParseException {
 
         FileReader read = new FileReader();
 
@@ -17,6 +18,7 @@ public class UI {
         endDate = reader.nextLine();
 
         read.createList(startDate, endDate);
+//        read.createList("01-01-2023", "10-26-2023");
 
         Database database = new Database();
         database.listReader(read.getList());
