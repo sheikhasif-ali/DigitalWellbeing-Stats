@@ -3,6 +3,7 @@ package WellbeingCounter;
 import java.text.*;
 import java.util.ArrayList;
 import java.io.File;
+import java.util.Calendar;
 import java.util.Date;
 
 //this class main goal is to create a list containing all the files in the directory
@@ -20,24 +21,21 @@ public class FileReader {
         File directory = new File("C:/Users/Asif/AppData/Local/digital-wellbeing/dailylogs");
 
         File[] dirList = directory.listFiles();
-        assert dirList != null;
-        String[] date = dates(dirList);
-
 
         if (initialFile.isEmpty() && endFile.isEmpty()) {
 
-            initialFile = date[0];
-            endFile = date[1];
+            initialFile = "01-01-2023";
+            endFile = today();
             System.out.println(initialFile);
             System.out.println(endFile);
 
         } else if (initialFile.isEmpty()) {
-            initialFile = date[0];
+            initialFile = "01-01-2023";
             System.out.println(initialFile);
             System.out.println(endFile);
 
         } else if (endFile.isEmpty()) {
-            endFile = date[1];
+            endFile = today();
             System.out.println(initialFile);
             System.out.println(endFile);
 
@@ -49,13 +47,27 @@ public class FileReader {
 
     }
 
+    //this function returns today's date in a formatted way
+    public String today() {
+
+        Calendar calendar = Calendar.getInstance();
+
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH) + 1;
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        String formattedMonth = month < 10 ? "0" + month : String.valueOf(month);
+        String formattedDay = day < 10 ? "0" + day : String.valueOf(day);
+
+        return formattedMonth + "-" + formattedDay + "-" + year;
+
+    }
+
     //filter() takes as argument the list containing file names, start and end date
     public void filter(File[] array, String start, String end) {
         //array contains all the files in it
         ArrayList<File> directoryList = new ArrayList<>();
         for (File name : array) {
             Date tempDate = getDate(name.getName());
-//            System.out.println("start in filter is" + getDate(start));
             if ((tempDate.after(getDate(start))) && (tempDate.before(getDate(end))) || tempDate.equals(getDate(start)) || tempDate.equals(getDate(end))) {
                 directoryList.add(name);
             }
@@ -78,34 +90,6 @@ public class FileReader {
 
     }
 
-    //as windows has a weird sorting of files for dates, this functtion will find the earliest and latest date available
-    public String[] dates(File[] list) {
-        Date earliest;
-        Date latest;
-        earliest = getDate(list[0].getName());
-        latest = getDate(list[0].getName());
-
-        SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy");
-
-        for (int i = 0; i < list.length-1; i++) {
-            try{
-            Date tempDate = getDate(list[i].getName());
-
-            if (earliest.after(tempDate)) {
-                earliest = tempDate;
-            }
-            if (latest.before(tempDate)) {
-                latest = tempDate;
-            }
-            } catch (IndexOutOfBoundsException e) {
-                System.out.println("lmaoe" + e.getMessage());
-            }
-
-
-        }
-        return new String[]{formatter.format(earliest), formatter.format(latest)};
-
-    }
 
     //returns the list containing all the files of the directory
     public ArrayList<File> getList() {

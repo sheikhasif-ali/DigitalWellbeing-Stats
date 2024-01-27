@@ -44,7 +44,7 @@ public class Database implements Comparator<String> {
                 appList.add(new AppData(split[0], Integer.valueOf(split[1])));
             }
         } catch (Exception e) {
-            System.out.println("Error:" + e.getMessage());
+            System.out.println("Error:" + e.getMessage() + "\n " + Arrays.toString(e.getStackTrace()));
         }
         appList.sort(Comparator.comparing(AppData::getAppName, String.CASE_INSENSITIVE_ORDER));
         return appList;
