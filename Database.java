@@ -2,19 +2,22 @@ package WellbeingCounter;
 
 import java.io.File;
 import java.util.*;
+import java.util.stream.Collectors;
 
+/* database will store each day and all the apps used that day.
+it also contains methods to display topApps according to the time criteria.*/
 public class Database implements Comparator<String> {
 
-    // database will store each day and all the apps used that day.
     //list stores all the days with an array having all the apps with their times
     private final HashMap<Date, ArrayList<AppData>> list;
-    //appTime stores the total time an app was used
-    private HashMap<String, Integer> appTime;
+    //totalAppTime stores the name of the app along with total time an app was used
+    private HashMap<String, Integer> totalAppTime;
+    private int timeLimit = 0;
     private final HashMap<String, Integer> gameTime;
     private final HashMap<String, Integer> codeTime;
 
     public Database() {
-        this.appTime = new HashMap<>();
+        this.totalAppTime = new HashMap<>();
         this.list = new HashMap<>();
         this.codeTime = new HashMap<>();
         this.gameTime = new HashMap<>();
@@ -28,13 +31,17 @@ public class Database implements Comparator<String> {
     //adds to the list hashmap the date and all the apps used that day
     public void listReader(ArrayList<File> list) {
         //this used (File loop : list) but it caused a IndexOutOfBound error so replaced it
-        for (int i = 0; i < list.size()-2;i++) {
-            this.add(FileReader.getDate(list.get(i).getName()), fileContent(list.get(i)));
+//        for (int i = 0; i < list.size() - 2; i++) {
+//            this.add(FileReader.getDate(list.get(i).getName()), fileContent(list.get(i)));
+//
+//        }
+        for (File loop : list) {
+            this.add(FileReader.getDate(loop.getName()), fileContent(loop));
 
         }
     }
 
-    //creates a arrayList of appData type and returns it.
+    //creates a arrayList of appData type of an particular date and returns it. So it contains all the apps used in a single day and how much it was used.
     public ArrayList<AppData> fileContent(File file) {
         ArrayList<AppData> appList = new ArrayList<>();
         try (Scanner reader = new Scanner(file)) {
@@ -44,7 +51,7 @@ public class Database implements Comparator<String> {
                 appList.add(new AppData(split[0], Integer.valueOf(split[1])));
             }
         } catch (Exception e) {
-            System.out.println("Error:" + e.getMessage() + "\n " + Arrays.toString(e.getStackTrace()));
+            System.out.println("Error:" + e.getMessage() + "\n " + Arrays.toString(e.getStackTrace()) + "\n Error In: " + file.getName());
         }
         appList.sort(Comparator.comparing(AppData::getAppName, String.CASE_INSENSITIVE_ORDER));
         return appList;
@@ -63,51 +70,46 @@ public class Database implements Comparator<String> {
         return str1.compareTo(str2);
     }
 
-    // create a function which will display the top 5 or 10 or however much
-    // specified apps used in that time period
+    // todo: create a function which will display the top 5 or 10 or however much
+
+
+    //this funtion will add the total time an app was used for every app
     public void appNameList() {
         for (ArrayList<AppData> loop : list.values()) {
-            for (AppData appLoop : loop) {
-                add(appLoop);
+            for (AppData app : loop) {
+                if (totalAppTime.containsKey(app.getAppName())) {
+                    totalAppTime.put(app.getAppName(), totalAppTime.get(app.getAppName()) + app.getAppTime());
+
+                } else {
+                    totalAppTime.putIfAbsent(app.getAppName(), app.getAppTime());
+
+                }
             }
-        }
-    }
-
-    public void add(AppData app) {
-        if (appTime.containsKey(app.getAppName())) {
-            Integer appTimeAdd = appTime.get(app.getAppName()) + app.getAppTime();
-            appTime.put(app.getAppName(), appTimeAdd);
-
-        } else {
-            appTime.putIfAbsent(app.getAppName(), app.getAppTime());
-
         }
     }
 
     public void displayTopApp() {
         appNameList();
-        List<Map.Entry<String, Integer>> entryList = new ArrayList<>(this.appTime.entrySet());
+//        List<Map.Entry<String, Integer>> entryList = new ArrayList<>(this.totalAppTime.entrySet());
+//
+//        // Step 2: Sort the List based on the integer values
+//        entryList.sort((entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue()));
+//
+//        // Step 3: Create a new LinkedHashMap to maintain the order of sorted entries
+//        LinkedHashMap<String, Integer> sortedHashMap = new LinkedHashMap<>();
+//
+//        // Step 4: Populate the LinkedHashMap with sorted entries
+//        for (Map.Entry<String, Integer> entry : entryList) {
+//            sortedHashMap.put(entry.getKey(), entry.getValue());
+//        }
 
-        // Step 2: Sort the List based on the integer values
-        entryList.sort((entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue()));
+        LinkedHashMap<String, Integer> sortedHashMap = totalAppTime.entrySet().stream()
+                .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (a, b) -> a, LinkedHashMap::new));
 
-        // Step 3: Create a new LinkedHashMap to maintain the order of sorted entries
-        LinkedHashMap<String, Integer> sortedHashMap = new LinkedHashMap<>();
 
-        // Step 4: Populate the LinkedHashMap with sorted entries
-        for (Map.Entry<String, Integer> entry : entryList) {
-            sortedHashMap.put(entry.getKey(), entry.getValue());
-        }
+        this.totalAppTime = sortedHashMap;
 
-        this.appTime = sortedHashMap;
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the limit in hours...");
-        int timeLimit = 6;
-        String input;
-        input = scanner.nextLine();
-        if (!(input.isEmpty())) {
-            timeLimit = Integer.parseInt(input);
-        }
         int totalHours = 0;
         for (String loop : sortedHashMap.keySet()) {
             if (sortedHashMap.get(loop) >= setLimit(timeLimit)) {
@@ -122,22 +124,22 @@ public class Database implements Comparator<String> {
 
             }
         }
-        System.out.println("\n Total Time was: " + totalHours + " Hours Or " + totalHours / 24 + " Days!");
-
+        //totalHours means the Total Time for all the apps fitting in the date range
+        System.out.println("\nTotal Time was: " + totalHours + " Hours Or " + totalHours / 24 + " Days!");
         System.out.println(codeAndGameTime());
 
     }
 
     public String codeAndGameTime() {
-        ArrayList<String> gameList = new ArrayList<>(Arrays.asList("RDR2","sekiro","ride5-Win64-Shipping","Borderlands2", "JustCause3", "Dishonored", "ShippingPC-BmGame", "TombRaider", "MW2CR", "forzahorizon5", "Cities", "hl2", "BioshockHD"));
+        ArrayList<String> gameList = new ArrayList<>(Arrays.asList("RDR2", "sekiro", "ride5-Win64-Shipping", "Borderlands2", "JustCause3", "Dishonored", "ShippingPC-BmGame", "TombRaider", "MW2CR", "forzahorizon5", "Cities", "hl2", "BioshockHD"));
         ArrayList<String> codeList = new ArrayList<>(Arrays.asList("chrome", "Code", "studio64", "idea64"));
         String codeReturn = "";
         String gameReturn = "";
         int totalGameTime = 0;
         int totalCodeTime = 0;
 
-        for (String loop : appTime.keySet()) {
-            int time = appTime.get(loop) / 3600;
+        for (String loop : totalAppTime.keySet()) {
+            int time = totalAppTime.get(loop) / 3600;
             if (gameList.contains(loop)) {
                 this.gameTime.put(loop, time);
                 gameReturn += (loop + " " + time + "\n");
@@ -151,7 +153,18 @@ public class Database implements Comparator<String> {
             }
         }
 
-        return "\nTotal Coding Time is ---> " + totalCodeTime + " hours OR " + totalCodeTime/24 + " Days" + "\n" + "\nTotal Gaming Time is ---> " + totalGameTime + " hours OR "  + totalGameTime/24 + " Days";
+        //these times will ouput total time used and doesn't see for any date ranges
+        return "\nTotal Coding Time is ---> " + totalCodeTime + " hours OR " + totalCodeTime / 24 + " Days" + "\n" + "\nTotal Gaming Time is ---> " + totalGameTime + " hours OR " + totalGameTime / 24 + " Days";
+    }
+
+    public void getLimit(int limit) {
+
+        this.timeLimit = limit;
+    }
+
+    public void getLimit() {
+
+        this.timeLimit = 0;
     }
 
 

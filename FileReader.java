@@ -1,12 +1,10 @@
 package WellbeingCounter;
 
 import java.text.*;
-import java.util.ArrayList;
+import java.util.*;
 import java.io.File;
-import java.util.Calendar;
-import java.util.Date;
 
-//this class main goal is to create a list containing all the files in the directory
+//this class main goal is to create a list containing all the files which fall inside the dates specified by the user in the directory
 public class FileReader {
     private ArrayList<File> list;
 
@@ -41,16 +39,28 @@ public class FileReader {
 
         }
         //after the list with the filename is created filter() is called.
-        System.out.println("early file is" + initialFile);
-        System.out.println("latest file is" + endFile);
+
         filter(dirList, initialFile, endFile);
 
+    }
+
+
+    //filter() takes as argument the list containing file names, start and end date and inserts them to the filtered "list"
+    public void filter(File[] array, String start, String end) {
+        //array contains all the files in it
+        ArrayList<File> directoryList = new ArrayList<>();
+        for (File name : array) {
+            Date tempDate = getDate(name.getName());
+            if ((tempDate.after(getDate(start))) && (tempDate.before(getDate(end))) || tempDate.equals(getDate(start)) || tempDate.equals(getDate(end))) {
+                list.add(name);
+            }
+        }
     }
 
     //this function returns today's date in a formatted way
     public String today() {
 
-        Calendar calendar = Calendar.getInstance();
+        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("Asia/Kolkata"));
 
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH) + 1;
@@ -61,20 +71,6 @@ public class FileReader {
         return formattedMonth + "-" + formattedDay + "-" + year;
 
     }
-
-    //filter() takes as argument the list containing file names, start and end date
-    public void filter(File[] array, String start, String end) {
-        //array contains all the files in it
-        ArrayList<File> directoryList = new ArrayList<>();
-        for (File name : array) {
-            Date tempDate = getDate(name.getName());
-            if ((tempDate.after(getDate(start))) && (tempDate.before(getDate(end))) || tempDate.equals(getDate(start)) || tempDate.equals(getDate(end))) {
-                directoryList.add(name);
-            }
-        }
-        this.list = directoryList;
-    }
-
     // these methods convert the filename into a date object for easier use.
     public static Date getDate(String stringDate) {
         stringDate = stringDate.substring(0, 10);
