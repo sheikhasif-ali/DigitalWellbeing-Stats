@@ -8,7 +8,7 @@ import java.io.File;
 public class FileReader {
     private ArrayList<File> list;
 
-    public FileReader() { // you removed String file from the argument of the constructor
+    public FileReader() { 
         this.list = new ArrayList<>();
     }
 

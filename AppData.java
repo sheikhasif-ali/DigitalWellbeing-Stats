@@ -17,8 +17,8 @@ public class AppData {
         return appTime;
     }
 
-    public String toString() {
+    /*public String toString() {
         return "\n" + appName + ":" + appTime;
-    }
+    }*/
 
 }

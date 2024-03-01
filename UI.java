@@ -23,7 +23,9 @@ public class UI {
         database.listReader(read.getList());
     
         System.out.println("Enter the limit in hours...");
-        database.getLimit(reader.nextInt());
+        database.getLimit(reader.nextLine());
+
+
         database.displayTopApp();
     }
 }

@@ -5,11 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0624d905-2261-47e8-bc5b-63a35907ee00" name="Changes" comment="added a function to display total time of code and gaming separately">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppData.java" beforeDir="false" afterPath="$PROJECT_DIR$/AppData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/Database.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/FileReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WellbeingCounter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/DigitalWellbeingStats.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/WellbeingCounter/WellbeingCounter/AppData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/WellbeingCounter/WellbeingCounter/Database.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/WellbeingCounter/WellbeingCounter/FileReader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/WellbeingCounter/WellbeingCounter/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/WellbeingCounter/WellbeingCounter/UI.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,11 +61,13 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Asif/Projects/Java/demo",
+    "last_opened_file_path": "C:/Users/Asif/Projects/Java/WellbeingCounter",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.runner"
+    "settings.editor.selected.configurable": "settings.sync",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunManager">
@@ -66,7 +75,7 @@
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="WellbeingCounter.Main" />
-      <module name="WellbeingCounter" />
+      <module name="DigitalWellbeingStats" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -74,7 +83,7 @@
     <configuration default="true" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <module name="WellbeingCounter" />
+      <module name="DigitalWellbeingStats" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -95,6 +104,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1692436840476</updated>
+      <workItem from="1709311762362" duration="139000" />
     </task>
     <task id="LOCAL-00001" summary="improved the date selection, removed unnecessary code, so it is now inclusive of the entered dates, fixed a lot of minor problems, added some documentation.">
       <option name="closed" value="true" />
@@ -138,6 +148,9 @@
     </task>
     <option name="localTasksCounter" value="6" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="RECENT_FILTERS">

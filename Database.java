@@ -13,14 +13,12 @@ public class Database implements Comparator<String> {
     //totalAppTime stores the name of the app along with total time an app was used
     private HashMap<String, Integer> totalAppTime;
     private int timeLimit = 0;
-    private final HashMap<String, Integer> gameTime;
-    private final HashMap<String, Integer> codeTime;
+
 
     public Database() {
         this.totalAppTime = new HashMap<>();
         this.list = new HashMap<>();
-        this.codeTime = new HashMap<>();
-        this.gameTime = new HashMap<>();
+
     }
 
     public void add(Date date, ArrayList<AppData> appList) {
@@ -28,7 +26,7 @@ public class Database implements Comparator<String> {
     }
 
 
-    //adds to the list hashmap the date and all the apps used that day
+    //adds to the list hashmap the date and all the apps used that day in order to populate it
     public void listReader(ArrayList<File> list) {
         //this used (File loop : list) but it caused a IndexOutOfBound error so replaced it
 //        for (int i = 0; i < list.size() - 2; i++) {
@@ -39,6 +37,8 @@ public class Database implements Comparator<String> {
             this.add(FileReader.getDate(loop.getName()), fileContent(loop));
 
         }
+        //this will populate the list hashmap
+//        appNameList();
     }
 
     //creates a arrayList of appData type of an particular date and returns it. So it contains all the apps used in a single day and how much it was used.
@@ -125,7 +125,7 @@ public class Database implements Comparator<String> {
             }
         }
         //totalHours means the Total Time for all the apps fitting in the date range
-        System.out.println("\nTotal Time was: " + totalHours + " Hours Or " + totalHours / 24 + " Days!");
+        System.out.println("\n\nApps were used for: " + totalHours + " Hours Or " + totalHours / 24 + " Days!");
         System.out.println(codeAndGameTime());
 
     }
@@ -141,13 +141,13 @@ public class Database implements Comparator<String> {
         for (String loop : totalAppTime.keySet()) {
             int time = totalAppTime.get(loop) / 3600;
             if (gameList.contains(loop)) {
-                this.gameTime.put(loop, time);
+//                this.gameTime.put(loop, time);
                 gameReturn += (loop + " " + time + "\n");
                 totalGameTime += time;
 
 
             } else if (codeList.contains(loop)) {
-                this.codeTime.put(loop, time);
+//                this.codeTime.put(loop, time);
                 codeReturn += (loop + " " + time + "\n");
                 totalCodeTime += time;
             }
@@ -157,16 +157,15 @@ public class Database implements Comparator<String> {
         return "\nTotal Coding Time is ---> " + totalCodeTime + " hours OR " + totalCodeTime / 24 + " Days" + "\n" + "\nTotal Gaming Time is ---> " + totalGameTime + " hours OR " + totalGameTime / 24 + " Days";
     }
 
-    public void getLimit(int limit) {
+    public void getLimit(String limit) {
+        if (limit.isBlank()) {
+            this.timeLimit = 0;
 
-        this.timeLimit = limit;
+        } else {
+            this.timeLimit = Integer.parseInt(limit);
+        }
+
     }
-
-    public void getLimit() {
-
-        this.timeLimit = 0;
-    }
-
 
     public int setLimit(int limit) {
         return limit * 3600;
