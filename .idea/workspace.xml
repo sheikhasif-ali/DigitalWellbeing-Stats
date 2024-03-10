@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0624d905-2261-47e8-bc5b-63a35907ee00" name="Changes" comment="added a function to display total time of code and gaming separately">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppData.java" beforeDir="false" afterPath="$PROJECT_DIR$/AppData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/FileReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WellbeingCounter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/DigitalWellbeingStats.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WellbeingCounter/WellbeingCounter/AppData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WellbeingCounter/WellbeingCounter/Database.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WellbeingCounter/WellbeingCounter/FileReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WellbeingCounter/WellbeingCounter/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WellbeingCounter/WellbeingCounter/UI.class" beforeDir="false" />
-    </list>
+    <list default="true" id="0624d905-2261-47e8-bc5b-63a35907ee00" name="Changes" comment="added a function to display total time of code and gaming separately" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,6 +49,10 @@
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Asif/Projects/Java/WellbeingCounter",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.0",
@@ -105,6 +96,7 @@
       <option name="presentableId" value="Default" />
       <updated>1692436840476</updated>
       <workItem from="1709311762362" duration="139000" />
+      <workItem from="1709311915368" duration="326000" />
     </task>
     <task id="LOCAL-00001" summary="improved the date selection, removed unnecessary code, so it is now inclusive of the entered dates, fixed a lot of minor problems, added some documentation.">
       <option name="closed" value="true" />
