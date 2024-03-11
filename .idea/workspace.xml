@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0624d905-2261-47e8-bc5b-63a35907ee00" name="Changes" comment="added a function to display total time of code and gaming separately">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/FileReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DigitalWellbeingStats/WellbeingCounter/FileReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DigitalWellbeingStats/WellbeingCounter/FileReader.class" afterDir="false" />
-    </list>
+    <list default="true" id="0624d905-2261-47e8-bc5b-63a35907ee00" name="Changes" comment="added a function to display total time of code and gaming separately" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -109,7 +105,7 @@
       <workItem from="1710166849333" duration="148000" />
       <workItem from="1710167016047" duration="64000" />
       <workItem from="1710167834341" duration="4000" />
-      <workItem from="1710170032939" duration="468000" />
+      <workItem from="1710170032939" duration="844000" />
     </task>
     <task id="LOCAL-00001" summary="improved the date selection, removed unnecessary code, so it is now inclusive of the entered dates, fixed a lot of minor problems, added some documentation.">
       <option name="closed" value="true" />
