@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0624d905-2261-47e8-bc5b-63a35907ee00" name="Changes" comment="added a function to display total time of code and gaming separately" />
+    <list default="true" id="0624d905-2261-47e8-bc5b-63a35907ee00" name="Changes" comment="added a function to display total time of code and gaming separately">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -105,7 +107,7 @@
       <workItem from="1710166849333" duration="148000" />
       <workItem from="1710167016047" duration="64000" />
       <workItem from="1710167834341" duration="4000" />
-      <workItem from="1710170032939" duration="844000" />
+      <workItem from="1710170032939" duration="1959000" />
     </task>
     <task id="LOCAL-00001" summary="improved the date selection, removed unnecessary code, so it is now inclusive of the entered dates, fixed a lot of minor problems, added some documentation.">
       <option name="closed" value="true" />
@@ -147,7 +149,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693496138939</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="added a function to display total time of code and gaming separately">
+      <option name="closed" value="true" />
+      <created>1710171306262</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1710171306262</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
