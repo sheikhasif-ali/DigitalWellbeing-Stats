@@ -16,7 +16,7 @@ public class FileReader {
     public void createList(String initialFile, String endFile) throws ParseException {// initialFile and endFile are initial and end dates
 
         //change your file here to use it yourself
-        File directory = new File("C:/Users/Asif/AppData/Local/digital-wellbeing/dailylogs");
+        File directory = new File("C:/Users/sheik/AppData/Local/digital-wellbeing/dailylogs");
 
         File[] dirList = directory.listFiles();
 
