@@ -1,7 +1,7 @@
 <p align="center">
   
 
-  <h1 align="center">Digital Wellbeing Statsa</h1>
+  <h1 align="center">Digital Wellbeing Stats</h1>
 
   <h4 align="center">See It In Action <a href="https://sheikhasif-ali.github.io/#digitalWellbeing">Here!</a></h4> 
 
